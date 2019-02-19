@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -77,11 +78,47 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+            <div class="container">
+                <div class="row">
+                    @if(Auth::check())
+                    <div class="col-lg-4">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="{{ route('home') }}">Home</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('categories') }}">Categories</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('posts') }}">All posts</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('category.create') }}">Create new category</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('post.create') }}">Create new post</a>
+                            </li>
+                        </ul>
+                    </div>
+                    @endif
+                    <div class="col-lg-8">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script>
+        @if(Session::has('success'))
+            toastr.success("{{ Session::get('success') }}")
+        @endif
+        @if(Session::has('info'))
+            toastr.info("{{ Session::get('info') }}")
+        @endif
+    </script>
+
 </body>
 </html>
