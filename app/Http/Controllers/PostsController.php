@@ -119,7 +119,7 @@ class PostsController extends Controller
 
         $post->delete();
 
-        Session::flash('success', 'Your selected post was just trash.');
+        Session::flash('success', 'Your selected post was just trashed.');
 
         return redirect()->back(); 
     }
@@ -129,7 +129,26 @@ class PostsController extends Controller
         $posts = Post::onlyTrashed()->get();
 
         return view('admin.posts.trashed')->with('posts', $posts);
+    } 
 
-        dd($posts);
+    public function kill($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+        
+        $post->forceDelete();
+
+        Session::flash('success', 'Post deleted successfully');
+
+        return redirect()->back();
+    }
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->restore();
+
+        Session::flash('success', 'Your post successfully restored.');
+
+        return redirect()->route('posts');
     }
 }
