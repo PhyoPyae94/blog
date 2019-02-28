@@ -10,6 +10,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePostTagTable' => $baseDir . '/database/migrations/2019_02_26_173926_create_post_tag_table.php',
     'CreatePostsTable' => $baseDir . '/database/migrations/2019_02_13_062534_create_posts_table.php',
+    'CreateProfilesTable' => $baseDir . '/database/migrations/2019_02_28_193100_create_profiles_table.php',
     'CreateTagsTable' => $baseDir . '/database/migrations/2019_02_26_164408_create_tags_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
