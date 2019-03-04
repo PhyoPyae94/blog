@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/test', function(){
-    return App\User::find(1)->profile;
+    return App\Category::find(2)->posts;
 });
 
 Route::get('/', function () {
