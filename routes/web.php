@@ -4,9 +4,10 @@ Route::get('/test', function(){
     return App\Category::find(2)->posts;
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'FrontEndController@index',
+    'as' => 'index'
+]);
 
 Auth::routes();
 
