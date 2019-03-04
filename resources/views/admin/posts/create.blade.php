@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('admin.includes.errors')
+    @include('admin.includes.errors')
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -49,4 +49,17 @@
             </form>
         </div>
     </div>
+@stop
+
+@section('styles')
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+@stop
+
+@section('scripts')
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#content').summernote();
+    });
+</script>
 @stop
