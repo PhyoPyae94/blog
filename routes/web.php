@@ -9,6 +9,11 @@ Route::get('/', [
     'as' => 'index'
 ]);
 
+Route::get('/{slug}', [
+    'uses' => 'FrontEndController@singlePost',
+    'as' => 'post.single'
+]);
+
 Auth::routes();
 
 
@@ -165,9 +170,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     ])->middleware('admin');
 
     // single page
-
-    Route::get('{slug}', [
-        'uses' => 'FrontEndController@singlePost',
-        'as' => 'post.single'
-    ]);
 });
