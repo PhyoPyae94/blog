@@ -1,5 +1,8 @@
 <?php
 
+use App\Category;
+use App\Http\Controllers\FrontEndController;
+
 Route::get('/test', function(){
     return App\Category::find(2)->posts;
 });
@@ -12,6 +15,11 @@ Route::get('/', [
 Route::get('post/{slug}', [
     'uses' => 'FrontEndController@singlePost',
     'as' => 'post.single'
+]);
+// Category page
+Route::get('/category{id}', [
+    'uses' => 'FrontEndController@category',
+    'as' => 'category.single'
 ]);
 
 Auth::routes();
@@ -168,6 +176,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'uses' => 'SettingsController@update',
         'as' => 'settings.update'
     ])->middleware('admin');
-
-    // single page
 });
