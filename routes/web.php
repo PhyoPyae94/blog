@@ -1,5 +1,6 @@
 <?php
 
+use App\Tag;
 use App\Category;
 use App\Http\Controllers\FrontEndController;
 
@@ -17,9 +18,14 @@ Route::get('post/{slug}', [
     'as' => 'post.single'
 ]);
 // Category page
-Route::get('/category{id}', [
+Route::get('/category/{id}', [
     'uses' => 'FrontEndController@category',
     'as' => 'category.single'
+]);
+//tag page
+Route::get('/tag/{id}', [
+    'uses' => 'FrontEndController@tag',
+    'as' => 'tag.single'
 ]);
 
 Auth::routes();

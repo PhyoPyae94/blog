@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Category;
 use App\Setting;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
@@ -48,6 +49,16 @@ class FrontEndController extends Controller
 
         return view('category')->with('category', $category)
                                ->with('title', $category->name) 
+                               ->with('settings', Setting::first())
+                               ->with('categories', Category::take(4)->get());
+    }
+
+    public function tag($id)
+    {
+        $tag = Tag::find($id);
+
+        return view('tag')->with('tag', $tag)
+                               ->with('title', $tag->tag) 
                                ->with('settings', Setting::first())
                                ->with('categories', Category::take(4)->get());
     }
